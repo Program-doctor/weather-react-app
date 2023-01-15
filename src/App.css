@@ -1,13 +1,19 @@
 .App {
   font-family: arial,sans-serif;
-  margin-top: 40px;
+  margin-bottom: 20px;
   background-color: #ffffff90;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 2px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   max-width: 600px;
   margin-top: 30px;
-  margin-left: 40px;
   padding-top: 20px;
   padding-left: 25px;
+}
+small{
+  padding-bottom: 50px !important;
+
+}
+.small{
+  margin-left: 3px;
 }
 header ul{
   margin: 0;
@@ -21,67 +27,11 @@ header ul li{
 list-style: none;
 margin-bottom: 25px;
 }
-ul li a {
+.link {
   color: #007bff;
   text-decoration: none;
 }
-ul li a:hover{
+.link:hover{
   color: #0056b3;
   text-decoration: underline;
-}
-input{
-  font-size: 1rem;
-  font-weight: 400;
-  padding: 13px;
-  margin-left: 0px;
-}
-input[type=search]{
-  border-radius: 2px;
-    border: none;
-    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
-    height: 44px;
-    outline: 0;
-    width: 250px;
-}
-input[type=submit]{
-  padding: 15px;
-  border: none;
-  cursor: pointer;
-  border-radius: 2px;
-  color: #ffffff;
-  font-weight: 400;
-}
-#search{
-  margin-right: 5px;
-  background-color: rgb(0, 123, 255);
-  border-color: rgb(0, 123, 255);
-}
-#search:hover{
-  background-color: #0069d9;
-  border-color: #0062cc;
-}
-
-#location{
-  background-color: #28a745;
-    border-color: #28a745;
-}
-#location:hover{
-  background-color: #218838;
-    border-color: #1e7e34;
-}
-.weatherinfo{
-margin-top: 20px;
-color: #878787;
-}
-.weatherinfo h1{
-  font-size: 24px;
-  font-weight: 100;
-  margin: 0;
-  line-height: 28px;
-}
-.weatherinfo p{
-  font-size: 16px;
-  line-height: 20px;
-  padding: 0;
-  margin: 0;
 }

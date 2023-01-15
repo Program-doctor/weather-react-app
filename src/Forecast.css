@@ -1,0 +1,10 @@
+.forecast{
+    margin-top: 35px !important;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}

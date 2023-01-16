@@ -12,7 +12,6 @@ export default function SearchEngine(props){
     }
     return (
         <div className="searchbox">
-            {city}
         <form action="" onSubmit={handleSubmit}>
       <input type="search" placeholder='Enter a city' id="" autoFocus="on" onChange={updateCity}/>
       <input type="submit" value="Search" id='search'/>

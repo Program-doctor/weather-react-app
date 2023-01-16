@@ -27,7 +27,7 @@ export default function Weather(props){
   } 
   if(weather.ready){
     return (<div className="Weather-app">
-      <SearchEngine/>
+      <SearchEngine city="props.city"/>
       <div className="weatherinfo">
       <h1>{weather.city}</h1>
       <p>Tuesday 14:33</p>

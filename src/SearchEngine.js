@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 
 
-export default function SearchEngine(){
-    const [city,setCity]=useState();
+export default function SearchEngine(props){
+    const [city,setCity]=useState(props.city);
     function handleSubmit(event){
         event.preventDefault();
     }
@@ -12,6 +12,7 @@ export default function SearchEngine(){
     }
     return (
         <div className="searchbox">
+            {city}
         <form action="" onSubmit={handleSubmit}>
       <input type="search" placeholder='Enter a city' id="" autoFocus="on" onChange={updateCity}/>
       <input type="submit" value="Search" id='search'/>

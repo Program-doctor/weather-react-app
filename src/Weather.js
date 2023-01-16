@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import "./Weather.css";
 import axios from "axios";
 import Forecast from './Forecast';
+import { ThreeCircles } from  'react-loader-spinner';
+import SearchEngine from "./SearchEngine";
 
 export default function Weather(props){
   const [weather,setWeather]=useState({ready:false});
@@ -25,13 +27,7 @@ export default function Weather(props){
   } 
   if(weather.ready){
     return (<div className="Weather-app">
-        <div className="searchbox">
-        <form action="">
-      <input type="search" placeholder='Enter a city' id="" autoFocus="on"/>
-      <input type="submit" value="Search" id='search'/>
-      <input type="submit" value="Current" id="location" />
-        </form>
-      </div>
+      <SearchEngine/>
       <div className="weatherinfo">
       <h1>{weather.city}</h1>
       <p>Tuesday 14:33</p>
@@ -56,6 +52,19 @@ export default function Weather(props){
   }
   else{
     search();
-    return "loading....";
+    return (
+      <ThreeCircles
+  height="100"
+  width="60"
+  color="#4fa94d"
+  wrapperStyle={{justifyContent:'center'}}
+  wrapperClass=""
+  visible={true}
+  ariaLabel="three-circles-rotating"
+  outerCircleColor="#16a085"
+  innerCircleColor="#e74c3c"
+  middleCircleColor="#f9c922"
+/>
+    );
   }
 }

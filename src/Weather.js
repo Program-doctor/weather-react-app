@@ -1,46 +1,61 @@
-import React from "react";
+import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import "./Weather.css";
-// import axios from "axios";
+import axios from "axios";
+import Forecast from './Forecast';
 
-export default function Weather(){
-    // const [city,setCity]=useState("");
-    // const [loaded,setLoaded]=useState(false);
+export default function Weather(props){
+  const [weather,setWeather]=useState({ready:false});
+  function handleResponse(response){
+    setWeather({ready:true,
+      city: response.data.city,
+      date: response.data.time,
+      desc: response.data.condition.description,
+      icon: response.data.condition.icon_url,
+      humid: response.data.temperature.humidity,
+      wind: response.data.wind.speed,
+      temp: response.data.temperature.current
+    })
+  }
 
-    // function handleSubmit(event){
-    //     event.preventDefault();
-    //     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f5984f7bc966396e1be817c3ac20863d&units=metric`;axios.get(url).then(displayWeather);
-    // }
-    // function updateCity(event){
-    //     setCity(event.target.value);
-    // }
-    
-    // function displayWeather(response){
-    //     setLoaded(true);
-    // }
-
+  function search(){
+    let apikey="3d44a4d43ebafcbeo52ab33b9ta05468";
+    let apiurl=`https://api.shecodes.io/weather/v1/current?query=${props.defualtCity}&key=${apikey}&units=metric`;
+    axios.get(apiurl).then(handleResponse);
+  } 
+  if(weather.ready){
     return (<div className="Weather-app">
         <div className="searchbox">
         <form action="">
-      <input type="search" placeholder='Enter a city' id=""/>
+      <input type="search" placeholder='Enter a city' id="" autoFocus="on"/>
       <input type="submit" value="Search" id='search'/>
       <input type="submit" value="Current" id="location" />
         </form>
       </div>
       <div className="weatherinfo">
-      <h1>Lisbon</h1>
+      <h1>{weather.city}</h1>
       <p>Tuesday 14:33</p>
-      <p>Drizzle</p>
+      <p className="text-capitalize">{weather.desc}</p>
       </div>
       <div className="weatherdetails row">
       <div className="col-6">
-      <img src="" alt=""/>
-      <h2 className="temp">12&deg;C</h2>
+        <div className="row">
+          <div className="col-6">
+      <img src={weather.icon} alt=""/>
+          </div>
+      <h2><span className="temp col-6">{Math.round(weather.temp)}</span><span className="unit">&deg;C</span></h2>
+        </div>
       </div>
-      <div className="col-6">
-      <p>Precipitation:95%</p>
-      <p>Wind:5km/h</p>
+      <div className="col-6 info">
+      <p>Humidity:{Math.round(weather.humid)}%</p>
+      <p>Wind:{Math.round(weather.wind)}/h</p>
       </div>
       </div>
+      <Forecast/>
     </div>);
+  }
+  else{
+    search();
+    return "loading....";
+  }
 }

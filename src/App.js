@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Forecast from './Forecast';
 import Weather from './Weather';
 
 
@@ -17,10 +16,9 @@ function App() {
           <li><a href='/' className='link'>San Francisco</a></li>
         </ul>
       </header>
-      <Weather/>
-      <Forecast/>
+      <Weather defualtCity="Lisbon"/>
     </div>
-    <small className='small'><a href="http://" target="_blank" rel="noopener noreferrer" title="source code on github" className='link'>Open-source-code</a>, by <a href="http://" target="_blank" rel="noopener noreferrer" className='link'>Promise Sylvester</a></small>
+    <small className='small'><a href="https://github.com/Program-doctor/weather-react-app" target="_blank" rel="noopener noreferrer" title="Source code on github" className='link'>Open-source-code</a>, by <a href="http://beautiful-monstera-c0c071.netlify.app/" target="_blank" rel="noopener noreferrer" title="My portfolio" className='link'>Promise Sylvester</a></small>
     </div>
   );
 }

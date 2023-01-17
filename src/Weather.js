@@ -4,9 +4,10 @@ import "./Weather.css";
 import axios from "axios";
 import Forecast from './Forecast';
 import { ThreeCircles } from  'react-loader-spinner';
-import SearchEngine from "./SearchEngine";
+
 
 export default function Weather(props){
+  const [city,setCity]=useState(props.defualtCity);
   const [weather,setWeather]=useState({ready:false});
   function handleResponse(response){
     setWeather({ready:true,
@@ -20,14 +21,29 @@ export default function Weather(props){
     })
   }
 
+  function handleSubmit(event){
+      event.preventDefault();
+      search();
+  }
+
+  function updateCity(event){
+      setCity(event.target.value);
+  }
+  
   function search(){
     let apikey="3d44a4d43ebafcbeo52ab33b9ta05468";
-    let apiurl=`https://api.shecodes.io/weather/v1/current?query=${props.defualtCity}&key=${apikey}&units=metric`;
+    let apiurl=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apikey}&units=metric`;
     axios.get(apiurl).then(handleResponse);
   } 
   if(weather.ready){
     return (<div className="Weather-app">
-      <SearchEngine city="props.city"/>
+      <div className="searchbox">
+      <form action="" onSubmit={handleSubmit}>
+    <input type="search" placeholder='Enter a city' id="" autoFocus="on" onChange={updateCity}/>
+    <input type="submit" value="Search" id='search'/>
+    <input type="submit" value="Current" id="location" />
+      </form>
+    </div>
       <div className="weatherinfo">
       <h1>{weather.city}</h1>
       <p>Tuesday 14:33</p>

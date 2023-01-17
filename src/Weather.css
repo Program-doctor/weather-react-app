@@ -45,16 +45,20 @@ input{
 }
 .weatherdetails h2{
     margin-top: -22px !important;
-
-}
-.temp{
     color: #333;
     font-size: 54px;
     font-weight: 400;
     line-height: 1;
     padding-left: 10px;
+    margin-left: -15px;
+}
+.imgtemp{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
 }
 .weatherdetails img{
+    margin-left: -20px;
     margin-top: -30px;
 }
 .unit{
@@ -65,13 +69,14 @@ input{
     line-height: 1.5;
 }
 .info{
-    margin-top: 30px;
+    margin-top: 15px;
       color: #878787;
   }
   .info p{
       margin-bottom: 3px;
   }
   .weatherdetails{
+      margin-bottom: -19px;
       margin-top: 20px;
   }
   .weatherinfo h1{

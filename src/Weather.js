@@ -18,7 +18,8 @@ export default function Weather(props){
       humid: response.data.temperature.humidity,
       wind: response.data.wind.speed,
       temp: response.data.temperature.current
-    })
+    });
+    console.log(response.data.condition.icon_url);
   }
 
   function handleSubmit(event){
@@ -51,16 +52,14 @@ export default function Weather(props){
       </div>
       <div className="weatherdetails row">
       <div className="col-6">
-        <div className="row">
-          <div className="col-6">
-      <img src={weather.icon} alt=""/>
-          </div>
-      <h2><span className="temp col-6">{Math.round(weather.temp)}</span><span className="unit">&deg;C</span></h2>
+        <div className="imgtemp">
+      <img src={weather.icon} alt={weather.desc}/>
+      <h2><span>{Math.round(weather.temp)}</span><span className="unit">&deg;C</span></h2>
         </div>
       </div>
       <div className="col-6 info">
       <p>Humidity:{Math.round(weather.humid)}%</p>
-      <p>Wind:{Math.round(weather.wind)}/h</p>
+      <p>Wind:{Math .round(weather.wind)}km /h</p>
       </div>
       </div>
       <Forecast/>
@@ -73,7 +72,7 @@ export default function Weather(props){
   height="100"
   width="60"
   color="#4fa94d"
-  wrapperStyle={{justifyContent:'center'}}
+  wrapperStyle={{justifyContent:'center', alignContent:'center',marginBottom:10}}
   wrapperClass=""
   visible={true}
   ariaLabel="three-circles-rotating"

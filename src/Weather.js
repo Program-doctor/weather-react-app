@@ -4,6 +4,7 @@ import "./Weather.css";
 import axios from "axios";
 import Forecast from './Forecast';
 import { ThreeCircles } from  'react-loader-spinner';
+import Weatherinfo from "./Weatherinfo";
 
 
 export default function Weather(props){
@@ -45,23 +46,7 @@ export default function Weather(props){
     <input type="submit" value="Current" id="location" />
       </form>
     </div>
-      <div className="weatherinfo">
-      <h1>{weather.city}</h1>
-      <p>Tuesday 14:33</p>
-      <p className="text-capitalize">{weather.desc}</p>
-      </div>
-      <div className="weatherdetails row">
-      <div className="col-6">
-        <div className="imgtemp">
-      <img src={weather.icon} alt={weather.desc}/>
-      <h2><span>{Math.round(weather.temp)}</span><span className="unit">&deg;C</span></h2>
-        </div>
-      </div>
-      <div className="col-6 info">
-      <p>Humidity:{Math.round(weather.humid)}%</p>
-      <p>Wind:{Math.round(weather.wind)}km /h</p>
-      </div>
-      </div>
+    <Weatherinfo data={weather}/>
       <Forecast/>
     </div>);
   }

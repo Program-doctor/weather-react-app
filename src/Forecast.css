@@ -9,3 +9,8 @@ ul{
 li{
     list-style: none;
 }
+@media screen and (max-width:580px) {
+    .forecast{
+       text-align: center;
+   } 
+}

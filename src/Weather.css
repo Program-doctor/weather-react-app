@@ -98,4 +98,15 @@ input{
         #search{
             margin-right: 20px;
       }
+      .weatherdetails h2{
+        font-size: 44px;
+      }
+      .unit{
+        top: -25px;
+      }
+    }
+    @media screen and (max-width:450px){
+    .fahrenheit{
+      display: none;
+    }
   }

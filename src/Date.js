@@ -5,11 +5,11 @@ export default function Date(props){
     let day=days[props.dateValue.getDay()];
     let minutes=props.dateValue.getMinutes();
     if(minutes<10){
-        return `0${minutes}`
+        minutes=`0${minutes}`
     }
     let hours=props.dateValue.getHours();
     if(hours<10){
-        return `0${hours}`
+        hours=`0${hours}`
     }
-    return( <div className="Date">{day} {hours}:{minutes}</div> );
+    return(<div>{day} {hours}:{minutes}</div> );
 }

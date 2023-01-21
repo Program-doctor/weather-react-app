@@ -55,10 +55,10 @@ input{
 .imgtemp{
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 35px;
 }
-.weatherdetails img{
-    margin-left: -20px;
+.weatherdetails canvas{
+    margin-left: -8px;
     margin-top: -30px;
 }
 .unit{

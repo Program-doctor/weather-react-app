@@ -15,7 +15,7 @@ export default function Weather(props){
       city: response.data.city,
       date: new Date(response.data.time*1000),
       desc: response.data.condition.description,
-      icon: response.data.condition.icon_url,
+      icon: response.data.condition.icon,
       humid: response.data.temperature.humidity,
       wind: response.data.wind.speed,
       temp: response.data.temperature.current
@@ -32,7 +32,7 @@ export default function Weather(props){
   }
   
   function search(){
-    let apikey="3d44a4d43ebafcbeo52ab33b9ta05468";
+    let apikey="eac360db5fc86ft86450f3693e73o43f";
     let apiurl=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apikey}&units=metric`;
     axios.get(apiurl).then(handleResponse);
   } 

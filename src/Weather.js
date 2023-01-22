@@ -10,6 +10,7 @@ import Weatherinfo from "./Weatherinfo";
 export default function Weather(props){
   const [city,setCity]=useState(props.defualtCity);
   const [weather,setWeather]=useState({ready:false});
+  
   function handleResponse(response){
     setWeather({ready:true,
       city: response.data.city,
@@ -18,7 +19,8 @@ export default function Weather(props){
       icon: response.data.condition.icon,
       humid: response.data.temperature.humidity,
       wind: response.data.wind.speed,
-      temp: response.data.temperature.current
+      temp: response.data.temperature.current,
+      coord: response.data.coordinates
     });
   }
 
@@ -29,6 +31,18 @@ export default function Weather(props){
 
   function updateCity(event){
       setCity(event.target.value);
+  }
+
+  function showPosition(position){
+    let lat=position.coords.latitude;
+    let lon=position.coords.longitude;
+    let apikey="eac360db5fc86ft86450f3693e73o43f";
+    let apiurl=`https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apikey}&units=metric`;
+    axios.get(apiurl).then(handleResponse);
+  }
+
+  function getCurrentPosition(){
+    navigator.geolocation.getCurrentPosition(showPosition);
   }
   
   function search(){
@@ -42,11 +56,11 @@ export default function Weather(props){
       <form action="" onSubmit={handleSubmit}>
     <input type="search" placeholder='Enter a city' id="" autoFocus="on" onChange={updateCity}/>
     <input type="submit" value="Search" id='search'/>
-    <input type="submit" value="Current" id="location" />
+    <input type="submit" value="Current" id="location" onClick={getCurrentPosition} />
       </form>
     </div>
     <Weatherinfo data={weather}/>
-    <Forecast/>
+    <Forecast coords={weather.coord}/>
     </div>);
   }
   else{

@@ -104,6 +104,9 @@ input{
       .unit{
         top: -25px;
       }
+      .weatherdetails canvas{
+        width: 40px;
+      }
     }
     @media screen and (max-width:450px){
     .fahrenheit{

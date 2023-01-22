@@ -31,7 +31,7 @@ export default function Forecast(props){
            );
   }
   else{
-    let apikey="eac360db5fc86ft86450f3693e73o43f";
+    let apikey="3d44a4d43ebafcbeo52ab33b9ta05468";
     let lon=props.coords.longitude;
     let lat=props.coords.latitude;
     let apiUrl=`https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apikey}&units=metric`;

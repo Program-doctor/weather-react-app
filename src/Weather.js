@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import "./Weather.css";
 import axios from "axios";
@@ -7,10 +7,15 @@ import { ThreeCircles } from  'react-loader-spinner';
 import Weatherinfo from "./Weatherinfo";
 
 
+
 export default function Weather(props){
   const [city,setCity]=useState(props.defualtCity);
   const [weather,setWeather]=useState({ready:false});
-  
+
+  useEffect(()=>{
+    setWeather({ready:false})
+  },[handleClick()])
+
   function handleResponse(response){
     setWeather({ready:true,
       city: response.data.city,
@@ -29,14 +34,21 @@ export default function Weather(props){
       search();
   }
 
-  function updateCity(event){
-      setCity(event.target.value);
+  function handleClick(event){
+    event.preventDefault();
+    setCity(event.target.name);
+    search();
   }
+
+  function updateCity(event){
+    setCity(event.target.value);
+  }
+  
 
   function showPosition(position){
     let lat=position.coords.latitude;
     let lon=position.coords.longitude;
-    let apikey="eac360db5fc86ft86450f3693e73o43f";
+    let apikey="3d44a4d43ebafcbeo52ab33b9ta05468";
     let apiurl=`https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apikey}&units=metric`;
     axios.get(apiurl).then(handleResponse);
   }
@@ -45,13 +57,22 @@ export default function Weather(props){
     navigator.geolocation.getCurrentPosition(showPosition);
   }
   
+  
   function search(){
-    let apikey="eac360db5fc86ft86450f3693e73o43f";
+    let apikey="3d44a4d43ebafcbeo52ab33b9ta05468";
     let apiurl=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apikey}&units=metric`;
     axios.get(apiurl).then(handleResponse);
   } 
   if(weather.ready){
     return (<div className="Weather-app">
+          <header>
+        <ul>
+          <li><a href='/' className='link' onClick={handleClick} name="Lisbon">Lisbon</a></li>
+          <li><a href='/' className='link' onClick={handleClick} name="Paris">Paris</a></li>
+          <li><a href='/' className='link' onClick={handleClick} name="Sydney">Sydney</a></li>
+          <li><a href='/' className='link' onClick={handleClick} name="San Francisco">San Francisco</a></li>
+        </ul>
+      </header>
       <div className="searchbox">
       <form action="" onSubmit={handleSubmit}>
     <input type="search" placeholder='Enter a city' id="" autoFocus="on" onChange={updateCity}/>

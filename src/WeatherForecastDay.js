@@ -8,11 +8,11 @@ export default function WeatherForecastDay(props){
         let days=["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
         return days[day];
     }
-    return(<div>
+    return(<ul>
         <li>
             <p>{day()}</p>
         <WeatherIcon code={props.data.condition.icon} size={32}/>
         <p>{Math.round(props.data.temperature.day)}&deg;</p>
         </li>
-    </div> );
+    </ul> );
 }

@@ -9,12 +9,13 @@ import Weatherinfo from "./Weatherinfo";
 
 
 export default function Weather(props){
+  const [name, setName]=useState();
   const [city,setCity]=useState(props.defualtCity);
   const [weather,setWeather]=useState({ready:false});
 
   useEffect(()=>{
     setWeather({ready:false})
-  },[city])
+  },[name])
 
   function handleResponse(response){
     setWeather({ready:true,
@@ -37,6 +38,7 @@ export default function Weather(props){
   function handleClick(event){
      event.preventDefault();
     setCity(event.target.name);
+    setName(event.target.name);
     search();
   }
 

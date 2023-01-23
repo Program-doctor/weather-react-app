@@ -14,7 +14,7 @@ export default function Weather(props){
 
   useEffect(()=>{
     setWeather({ready:false})
-  },[handleClick()])
+  },[city])
 
   function handleResponse(response){
     setWeather({ready:true,
@@ -35,7 +35,7 @@ export default function Weather(props){
   }
 
   function handleClick(event){
-    event.preventDefault();
+     event.preventDefault();
     setCity(event.target.name);
     search();
   }
